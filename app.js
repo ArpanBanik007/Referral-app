@@ -10,16 +10,20 @@ dotenv.config();
 
 const app = express();
 
-// ✅ Get current __dirname (correct way)
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// // ✅ Get current __dirname (correct way)
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // ✅ CORS setup
-app.use(cors({
-  origin: process.env.CORS_ORIGIN,
-  credentials: true
-}));
+// app.use(cors({
+//   origin: process.env.CORS_ORIGIN,
+//   credentials: true
+// }));
 
+app.use(cors({
+origin : ["http://localhost:5173", "http://localhost:5174"], // ei ta te amra kon port e run hobe seta thik  korte parbo
+credentials : true
+}))
 // ✅ Body parsers
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
@@ -27,12 +31,12 @@ app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 // ✅ API Routes
 app.use("/api/v1", Dashboard);
 
-// ✅ Serve static frontend files
-app.use(express.static(path.join(__dirname, "Frontend", "Frontend", "dist")));
+// // ✅ Serve static frontend files
+// app.use(express.static(path.join(__dirname, "Frontend", "dist")));
 
-// ✅ Catch-all route for client-side routing (React/Vite)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "Frontend", "Frontend", "dist", "index.html"));
-});
+// // ✅ Catch-all route for client-side routing (React/Vite)
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
+// });
 
 export default app;

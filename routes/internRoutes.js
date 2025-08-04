@@ -4,6 +4,6 @@ import { getUsersDashboard } from "../controller/getusersDashboard.js";
 
 const router = Router();
 
-router.route("/").get(getUsersDashboard);
+router.route("/dashboard").get(getUsersDashboard);
 
 export default router;
