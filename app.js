@@ -31,7 +31,7 @@ app.use("/api/v1", Dashboard);
 app.use(express.static(path.join(__dirname, "Frontend", "Frontend", "dist")));
 
 // ✅ Catch-all route for client-side routing (React/Vite)
-app.get("/*", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "Frontend", "Frontend", "dist", "index.html"));
 });
 
