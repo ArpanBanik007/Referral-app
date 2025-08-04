@@ -9,7 +9,7 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/v1/dashboard");
+        const res = await axios.get("https://referral-app-6jua.onrender.com/api/v1/dashboard");
         setDashboard(res.data?.data || null);
       } catch (error) {
         console.error("Failed to fetch dashboard data", error);

@@ -6,4 +6,5 @@ const router = Router();
 
 router.route("/dashboard").get(getUsersDashboard);
 
+
 export default router;
